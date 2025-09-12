@@ -1,0 +1,55 @@
+# .dockerignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Environment variables
+.env
+.env.local
+
+# Logs and reports
+logs/
+*.log
+reports/
+*.png
+*.json
+
+# Documentation
+*.md
+docs/
+
+# Docker files (no need to copy these into the image)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Scripts (optional, keep if you want them in container)
+# *.sh
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: contact_center_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: contact_center_db
+      MYSQL_USER: contact_center_user
+      MYSQL_PASSWORD: contact_center_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: contact_center_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  adminer:
+    image: adminer
+    container_name: contact_center_adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  api:
+    build: .
+    container_name: contact_center_api
+    env_file:
+      - .env.docker
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./:/app   # Monta TODO el repo en /app
+    networks:
+      - default
+    command: ["./wait-for-it.sh", "mysql:3306", "--", "./wait-for-it.sh", "redis:6379", "--", "python", "main.py"]
+
+  webhook:
+    build: .
+    container_name: contact_center_webhook
+    env_file:
+      - .env.docker
+    ports:
+      - "8001:8001"
+    depends_on:
+      - api
+    volumes:
+      - ./:/app   # Monta TODO el repo en /app
+    networks:
+      - default
+    command: ["./wait-for-it.sh", "api:8000", "--", "python", "webhook_listener.py"]
+
+volumes:
+  mysql_data:
+  redis_data:

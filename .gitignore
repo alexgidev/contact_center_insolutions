@@ -1,0 +1,66 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.swp
+*.egg-info/
+*.egg
+*.log
+*.pot
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# -------------------------
+# Docker
+# -------------------------
+# Contenedores, imágenes, volúmenes
+*.tar
+*.docker
+docker-compose.override.yml
+docker-compose.override.*.yml
+
+# Logs generados por la app
+logs/
+reports/
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+
+# JetBrains
+*.iml
+*.iws
+*.ipr
+
+# Mac / Linux
+.DS_Store
+*.swp
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -------------------------
+# Environment files
+# -------------------------
+.env
+.env.local
+.env.*.local

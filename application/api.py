@@ -25,7 +25,6 @@ logger = logging.getLogger(__name__)
 
 # Create a global httpx client
 webhook_client = httpx.AsyncClient(timeout=1.0)
-# En tu código de la API donde haces requests al webhook
 WEBHOOK_URL = os.getenv("WEBHOOK_URL", "http://webhook:8001/webhook")
 
 

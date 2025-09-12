@@ -1,13 +1,19 @@
+# Contact Center - Instrucciones de despliegue y pruebas
 
-````md
-# Contact Center - Docker Demo
+Este proyecto contiene:
+
+- API en Python
+- Webhook listener
+- MySQL y Redis como servicios
+- Simulador (`simulator.py`) para generar llamadas de prueba
+
+---
 
 ## Clonar el repositorio
 
 ```bash
 git clone https://github.com/alexgidev/contact_center_insolutions.git
 cd contact_center_insolutions
-````
 
 ## Configurar variables de entorno
 
@@ -64,4 +70,5 @@ Para detener todo y eliminar datos persistentes:
 ```bash
 docker compose down -v
 ```
+
 

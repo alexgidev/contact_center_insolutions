@@ -20,7 +20,7 @@ cd contact_center_insolutions
 Copiar el archivo de ejemplo:
 
 ```bash
-cp .env.docker.example .env.docker
+cp env.docker.example .env.docker
 ```
 
 ## Levantar los contenedores
@@ -70,5 +70,6 @@ Para detener todo y eliminar datos persistentes:
 ```bash
 docker compose down -v
 ```
+
 
 

@@ -44,6 +44,7 @@ docker compose logs -f webhook
 
 Adminer disponible en [http://localhost:8080](http://localhost:8080)
 
+* Servidor: `mysql`
 * Usuario: `contact_center_user`
 * Contraseña: `contact_center_pass`
 * Base de datos: `contact_center_db`
@@ -70,6 +71,7 @@ Para detener todo y eliminar datos persistentes:
 ```bash
 docker compose down -v
 ```
+
 
 
 
